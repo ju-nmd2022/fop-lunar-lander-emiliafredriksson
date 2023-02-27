@@ -33,15 +33,59 @@ function planets(x, y, s) {
 }
 
 function spaceship(x, y, s) {
-  // noStroke();
+  noStroke();
+  fill(122, 122, 122);
+  rect(x, y, 20 * s, 15 * s);
+  triangle(x, y, x - 10 * s, y + 7.5 * s, x, y + 15 * s);
+  triangle(x + 20 * s, y, x + 30 * s, y + 7.5 * s, x + 20 * s, y + 15 * s);
+  fill(0, 255, 255);
   beginShape();
-  stroke(255);
-  vertex(x, y);
-  vertex(x - 20, y + 10);
+  vertex(x - 2 * s, y + 5 * s);
+  bezierVertex(
+    x - 2,
+    y - 15 * s,
+    x + 22 * s,
+    y - 15 * s,
+    x + 22 * s,
+    y + 5 * s
+  );
+  bezierVertex(
+    x + 22 * s,
+    y + 10 * s,
+    x - 2 * s,
+    y + 10 * s,
+    x - 2 * s,
+    y + 5 * s
+  );
+  endShape();
+  fill(225);
+  ellipse(x + 18 * s, y + 3 * s, 3 * s, 6 * s);
+  ellipse(x + 17 * s, y - 2 * s, 3 * s);
+}
+
+function flame(x, y, s) {
+  noStroke();
+  fill(255, 255, 255, 180);
+  beginShape();
+  vertex(x + 7 * s, y + 10 * s);
+  vertex(x, y + 30 * s);
+  vertex(x + 20 * s, y + 30 * s);
+  vertex(x + 13 * s, y + 10 * s);
+  vertex(x + 7 * s, y + 10 * s);
+  endShape();
+  fill(255);
+  beginShape();
+  vertex(x + 8 * s, y + 10 * s);
+  vertex(x + 3 * s, y + 32 * s);
+  vertex(x + 17 * s, y + 32 * s);
+  vertex(x + 12 * s, y + 10 * s);
+  vertex(x + 8 * s, y + 10 * s);
+  endShape();
 }
 
 function draw() {
   scenery();
   planets(350, 450, 1);
-  spaceship(400, 50, 4);
+  flame(400, 50, 1);
+  spaceship(400, 50, 1);
 }
