@@ -32,12 +32,16 @@ function planets(x, y, s) {
   ellipse(x + 350 * s, y + 25 * s, 35 * s);
 }
 
-function rocket(x, y, s) {
-  noStroke();
+function spaceship(x, y, s) {
+  // noStroke();
+  beginShape();
+  stroke(255);
+  vertex(x, y);
+  vertex(x - 20, y + 10);
 }
 
 function draw() {
   scenery();
   planets(350, 450, 1);
-  rocket(400, 50, 4);
+  spaceship(400, 50, 4);
 }
