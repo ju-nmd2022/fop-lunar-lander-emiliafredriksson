@@ -2,6 +2,23 @@ function scenery() {
   background(0);
 }
 
+let sentence = "Start";
+gameIsActive = false;
+
+function startButton(x, y) {
+  fill(255);
+  ellipse(x, y, 150, 75);
+  fill(0);
+  textSize(20);
+  text(sentence, x - 20, y + 5);
+}
+
+function mousePressed() {
+  if (mouseX > 310 && mouseX < 460 && mouseY > 110 && mouseY < 190) {
+    gameIsActive = true;
+  }
+}
+
 function planets(x, y, s) {
   noStroke();
   fill(255, 128, 0);
@@ -83,9 +100,33 @@ function flame(x, y, s) {
   endShape();
 }
 
+let spaceshipX = 375;
+let spaceshipY = 50;
+let velocity = 0.5;
+let acceleration = 0.02;
+
 function draw() {
   scenery();
   planets(350, 450, 1);
-  flame(400, 50, 1);
-  spaceship(400, 50, 1);
+
+  spaceship(spaceshipX, spaceshipY, 1);
+
+  if (gameIsActive === true) {
+    spaceshipY = spaceshipY + velocity;
+    velocity = velocity + acceleration;
+
+    if (keyIsDown(40)) {
+      flame(spaceshipX, spaceshipY, 1);
+      spaceship(spaceshipX, spaceshipY, 1);
+      velocity = velocity - 0.04;
+    }
+    if (keyIsDown(39)) {
+      spaceshipX = spaceshipX + 1.3;
+    }
+    if (keyIsDown(37)) {
+      spaceshipX = spaceshipX - 1.3;
+    }
+  } else {
+    startButton(width / 2, 150);
+  }
 }
