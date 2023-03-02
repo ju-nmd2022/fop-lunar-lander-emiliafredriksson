@@ -2,7 +2,8 @@ function scenery() {
   background(0);
 }
 
-let sentence = "Start";
+let sentence1 = "Start";
+let sentence2 = "Restart";
 gameIsActive = false;
 
 function startButton(x, y) {
@@ -10,7 +11,7 @@ function startButton(x, y) {
   ellipse(x, y, 150, 75);
   fill(0);
   textSize(20);
-  text(sentence, x - 20, y + 5);
+  text(sentence1, x - 20, y + 5);
 }
 
 function mousePressed() {
@@ -100,6 +101,19 @@ function flame(x, y, s) {
   endShape();
 }
 
+function loseScreen() {
+  fill(255, 0, 0);
+  rect(0, 0, width, height);
+}
+
+function restartButton(x, y) {
+  fill(255);
+  ellipse(x, y, 150, 75);
+  fill(0);
+  textSize(20);
+  text(sentence2, x - 35, y + 5);
+}
+
 let spaceshipX = 375;
 let spaceshipY = 50;
 let velocity = 0.5;
@@ -108,7 +122,6 @@ let acceleration = 0.02;
 function draw() {
   scenery();
   planets(350, 450, 1);
-
   spaceship(spaceshipX, spaceshipY, 1);
 
   if (gameIsActive === true) {
@@ -128,5 +141,11 @@ function draw() {
     }
   } else {
     startButton(width / 2, 150);
+  }
+
+  if (spaceshipY > 550) {
+    gameIsActive = false;
+    loseScreen();
+    restartButton(width / 2, 150);
   }
 }
