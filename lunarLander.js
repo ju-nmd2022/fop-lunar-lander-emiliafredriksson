@@ -2,10 +2,6 @@ function scenery() {
   background(0);
 }
 
-let sentence1 = "Start";
-let sentence2 = "Restart";
-gameIsActive = false;
-
 function startButton(x, y) {
   fill(255);
   ellipse(x, y, 150, 75);
@@ -17,6 +13,8 @@ function startButton(x, y) {
 function mousePressed() {
   if (mouseX > 310 && mouseX < 460 && mouseY > 110 && mouseY < 190) {
     gameIsActive = true;
+    spaceshipY = 50;
+    spaceshipX = 375;
   }
 }
 
@@ -101,9 +99,14 @@ function flame(x, y, s) {
   endShape();
 }
 
-function loseScreen() {
-  fill(255, 0, 0);
-  rect(0, 0, width, height);
+function lose() {
+  fill(255);
+  text(sentence3, 350, 300);
+}
+
+function win() {
+  fill(255);
+  text(sentence4, 350, 300);
 }
 
 function restartButton(x, y) {
@@ -114,16 +117,32 @@ function restartButton(x, y) {
   text(sentence2, x - 35, y + 5);
 }
 
+function mousePressed() {
+  if (mouseX > 310 && mouseX < 460 && mouseY > 110 && mouseY < 190) {
+    gameIsActive = true;
+    spaceshipY = 50;
+    spaceshipX = 375;
+    velocity = 0.5;
+    acceleration = 0.02;
+  }
+}
+
+gameIsActive = false;
 let spaceshipX = 375;
 let spaceshipY = 50;
 let velocity = 0.5;
 let acceleration = 0.02;
+let sentence1 = "Start";
+let sentence2 = "Restart";
+let sentence3 = "You lose!";
+let sentence4 = "You win!";
 
 function draw() {
   scenery();
   planets(350, 450, 1);
   spaceship(spaceshipX, spaceshipY, 1);
 
+  // action when game is on
   if (gameIsActive === true) {
     spaceshipY = spaceshipY + velocity;
     velocity = velocity + acceleration;
@@ -143,9 +162,102 @@ function draw() {
     startButton(width / 2, 150);
   }
 
+  // landing on planets
+  if (
+    spaceshipY > 320 &&
+    spaceshipY < 350 &&
+    spaceshipX > 310 &&
+    spaceshipX < 390
+  ) {
+    gameIsActive = false;
+    win();
+    restartButton(width / 2, 150);
+  }
+  if (
+    spaceshipY > 420 &&
+    spaceshipY < 450 &&
+    spaceshipX > 175 &&
+    spaceshipX < 225
+  ) {
+    gameIsActive = false;
+    win();
+    restartButton(width / 2, 150);
+  }
+  if (
+    spaceshipY > 270 &&
+    spaceshipY < 300 &&
+    spaceshipX > 445 &&
+    spaceshipX < 500
+  ) {
+    gameIsActive = false;
+    win();
+    restartButton(width / 2, 150);
+  }
+  if (
+    spaceshipY > 355 &&
+    spaceshipY < 375 &&
+    spaceshipX > 75 &&
+    spaceshipX < 120
+  ) {
+    gameIsActive = false;
+    win();
+    restartButton(width / 2, 150);
+  }
+  if (
+    spaceshipY > 375 &&
+    spaceshipY < 395 &&
+    spaceshipX > 605 &&
+    spaceshipX < 640
+  ) {
+    gameIsActive = false;
+    win();
+    restartButton(width / 2, 150);
+  }
+  if (
+    spaceshipY > 460 &&
+    spaceshipY < 470 &&
+    spaceshipX > 534 &&
+    spaceshipX < 560
+  ) {
+    gameIsActive = false;
+    win();
+    restartButton(width / 2, 150);
+  }
+  if (
+    spaceshipY > 485 &&
+    spaceshipY < 495 &&
+    spaceshipX > 35 &&
+    spaceshipX < 60
+  ) {
+    gameIsActive = false;
+    win();
+    restartButton(width / 2, 150);
+  }
+  if (
+    spaceshipY > 485 &&
+    spaceshipY < 495 &&
+    spaceshipX > 285 &&
+    spaceshipX < 310
+  ) {
+    gameIsActive = false;
+    win();
+    restartButton(width / 2, 150);
+  }
+  if (
+    spaceshipY > 465 &&
+    spaceshipY < 475 &&
+    spaceshipX > 685 &&
+    spaceshipX < 710
+  ) {
+    gameIsActive = false;
+    win();
+    restartButton(width / 2, 150);
+  }
+
+  // getting to the bottom
   if (spaceshipY > 550) {
     gameIsActive = false;
-    loseScreen();
+    lose();
     restartButton(width / 2, 150);
   }
 }
