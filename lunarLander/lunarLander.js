@@ -1,3 +1,7 @@
+function setup() {
+  createCanvas(750, 600);
+}
+
 function scenery() {
   background(0);
 }
