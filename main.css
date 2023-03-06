@@ -1,0 +1,21 @@
+body {
+  height: 100%;
+  margin-top: 3rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+header {
+  text-align: center;
+}
+
+main {
+  margin: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  text-align: right;
+}
