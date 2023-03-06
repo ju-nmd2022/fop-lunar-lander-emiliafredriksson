@@ -1,0 +1,13 @@
+body {
+  margin-top: 5rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+header {
+  text-align: center;
+}
+
+footer {
+  text-align: right;
+}

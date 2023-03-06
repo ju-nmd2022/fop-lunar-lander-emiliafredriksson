@@ -101,12 +101,12 @@ function flame(x, y, s) {
 
 function lose() {
   fill(255);
-  text(sentence3, 325, 250);
+  text(sentence3, 345, 250);
 }
 
 function win() {
   fill(255);
-  text(sentence4, 325, 250);
+  text(sentence4, 350, 250);
 }
 
 function restartButton(x, y) {
@@ -128,10 +128,12 @@ function mousePressed() {
 }
 
 gameIsActive = false;
+
 let spaceshipX = 375;
 let spaceshipY = 50;
 let velocity = 0.5;
 let acceleration = 0.02;
+
 let sentence1 = "Start";
 let sentence2 = "Restart";
 let sentence3 = "You lose!";
@@ -140,7 +142,7 @@ let sentence4 = "You win!";
 function draw() {
   scenery();
   planets(350, 450, 1);
-  spaceship(spaceshipX, spaceshipY, 1);
+  spaceship(spaceshipX, spaceshipY, 0.7);
 
   // action when game is on
   if (gameIsActive === true) {
@@ -148,8 +150,8 @@ function draw() {
     velocity = velocity + acceleration;
 
     if (keyIsDown(40)) {
-      flame(spaceshipX, spaceshipY, 1);
-      spaceship(spaceshipX, spaceshipY, 1);
+      flame(spaceshipX, spaceshipY, 0.7);
+      spaceship(spaceshipX, spaceshipY, 0.7);
       velocity = velocity - 0.04;
     }
     if (keyIsDown(39)) {
